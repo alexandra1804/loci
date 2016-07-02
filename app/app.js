@@ -48,7 +48,7 @@ function listController($scope, firebaseRef, $firebaseArray) {
     };
 };
 
-function newController($scope, firebaseRef, $firebaseArray) {
+function newController($scope, firebaseRef, $firebaseArray, $window) {
     $scope.list = $firebaseArray(firebaseRef);
     $scope.nameInput = [];
     $scope.descrInput = [];
@@ -58,6 +58,7 @@ function newController($scope, firebaseRef, $firebaseArray) {
                 name: $scope.nameInput,
                 description: $scope.descrInput
             });
+            $window.location.href = "index.html";
             console.log("A new project has been added");
             console.log( $scope.nameInput);
             console.log( $scope.descrInput);
