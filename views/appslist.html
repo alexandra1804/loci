@@ -1,0 +1,69 @@
+   <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">My Projects</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Start managing your apps by searching</h5>
+        </div>
+        <input id="searchinput" class="form-control" type="search" placeholder="Search..." ng-model="userInput.name" data-clear-btn="true"/>
+        <button ng-if="userInput.name.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()" />
+        <div class="row center">
+          <button data-clear-btn="true" type="button" id="download-button" class="btn-large waves-effect waves-light teal lighten-1" ng-click="applySearch()" onclick="showclear()">Search</button>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="img/parallax.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row" id="searchlist"  ng-repeat="item in list | filter:search">
+        <div class="col s12 left">
+			<a href="#">
+				<b>{{item.name}}</b>
+				<br>
+				<i class="descr markdown" markdown="{{item.description}}"></i>
+			</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<!--
+<ul class="users" ng-show="searchReasult && query">
+    <li ng-repeat="user in usersToFilter | filter: searchQuery |orderBy:type" class="thumbnail user-listing">
+        {{user.name}}
+        <p>{{user.address}}</p>
+    </li>
+</ul>
+
+<div class="search-box">
+                <input type="text" ng-model="query">
+                <div class="row center">
+                    <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1" ng-click="search()">Search</a>
+                </div>
+            </div>
+            
+            <form role="form">
+    <div class="form-group">
+        <input id="searchinput" class="form-control" type="search" placeholder="Search..." />
+    </div>
+    <div id="searchlist" class="list-group">
+        <a href="#" ng-repeat="item in list" class="list-group-item">
+            <b class="list-group-item-heading">{{item.name}}</b>
+            <br>
+            <i class="list-group-item-text descr">
+		{{item.description}}
+	    </i>
+        </a>
+    </div>
+</form>
+<script>
+    $('#searchlist').btsListFilter('#searchinput', {
+        itemChild: 'b'
+    });
+</script>
+-->
