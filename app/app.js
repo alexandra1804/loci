@@ -1,27 +1,27 @@
-//Файл с ангуляровским кодом
+'use strict';
 
-angular
-    .module('myApp', ['ngRoute', 'firebase'])
-    .constant('FirebaseUrl', 'https://myapps-ee62d.firebaseio.com/')
-    .service('firebaseRef', ['FirebaseUrl', Firebase])
+angular.module('myApp', [
+    'ngRoute',
+    'firebase'
+]).constant('FirebaseUrl', 'https://myapps-ee62d.firebaseio.com/')
+    // .service('firebaseRef', ['FirebaseUrl', Firebase])
     .directive('markdown', linkConverter)
     .controller('listCtrl', listController)
     .controller('newCtrl', newController)
-    .config(ApplicationConfig);
-
-function ApplicationConfig($routeProvider) {
-    $routeProvider.when('/', {
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/', {
             controller: 'listCtrl',
             templateUrl: 'views/appslist.html',
             callback: console.log('view h b loaded')
-    })
-                  .when('/new', {
+        })
+                    .when('/new', {
             controller: 'newCtrl',
             templateUrl: 'views/newapp.html',
             callback: console.log('view h b loaded')
         });
-}
-    
+
+    }]);
+
 function listController($scope, firebaseRef, $firebaseArray) {
     $scope.load = function() {
        $('.button-collapse').sideNav({
