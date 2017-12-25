@@ -9,13 +9,13 @@
 		<form class="col s12" action="/add" method=post>
 			<div class="row">
 				<div class="input-field col s12">
-					<input id="label" type="text" class="validate" name="label">
+					<input id="label" type="text" class="validate" name="label" value="{{ note.label }}">
 					<label for="label">Name</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input id="descr" type="text" class="validate" onclick="shownote();" name="descr">
+					<input id="descr" type="text" class="validate" onclick="shownote();" name="descr" value="{{ note.descr }}">
 					<label for="descr">Description</label>
 				</div>
 			</div>
