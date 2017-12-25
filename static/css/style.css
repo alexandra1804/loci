@@ -56,6 +56,18 @@ p {
   font-size: inherit;
 }
 
+.parent-of-images {
+  overflow: visible;
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+}
+
+img.pic {
+  height: 200px;
+  width: auto;
+}
+
 footer.page-footer {
   margin: 0;
 }

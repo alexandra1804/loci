@@ -31,8 +31,9 @@
     <div class="container">
         {% if notes %}
             {% for note in notes %}
-            <div class="section">
-                <div class="row" id="searchlist">
+            <!-- <div class="section"> -->
+            <div class="row">
+                <div class="card white valign">
                     <div class="col s12">
                         <a href="/edit?id={{note.id}}">
                             <h2>{{ note.label }}</h2>
@@ -42,13 +43,14 @@
                     </div>
                 </div>
             </div>
-            <div class="divider"></div>
             {% endfor %}
         {% else %}
-        <div class="section">
-            <div class="row">
-                <div class="col s12 left">
-                    <b>You naven't any notes yet.</b>
+        <!-- <div class="section"> -->
+        <div class="row">
+            <div class="card white valign">
+                <h1 class="header center teal-text text-lighten-2">You haven't any notes yet.</h1>
+                <div class="card-image parent-of-images" align="center">
+                    <img src="static/img/no_entries.gif" alt="Sad bunny" class="pic">
                 </div>
             </div>
         </div>
