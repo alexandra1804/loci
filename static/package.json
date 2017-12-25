@@ -1,0 +1,23 @@
+{
+  "name": "loci",
+  "version": "1.0.0",
+  "description": "Small app to memorize your discoveries",
+  "main": "app.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandra1804/loci.git"
+  },
+  "author": "Alexandra Abramovich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandra1804/loci/issues"
+  },
+  "homepage": "https://github.com/alexandra1804/loci#readme",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.100.2"
+  }
+}

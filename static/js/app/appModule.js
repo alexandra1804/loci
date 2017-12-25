@@ -138,3 +138,36 @@ currentMessageRef.on('value', function(snapshot) {
     lblCurrentMessage.innerText = snapshot.val();
 });
 */
+
+'use strict';
+
+angular.module('organization', [
+	'security',
+	'services',
+	'ui.grid',
+	'ui.grid.resizeColumns',
+	'ui.grid.autoResize',
+	'ui.grid.selection',
+	'ui.grid.infiniteScroll'
+]).config(['routeFilterProvider', 'authorizationProvider', function (routeFilterProvider, authorizationProvider) {
+
+	routeFilterProvider.registerFilter('/organizationCenter:path?', {
+		resolve: {
+			user: authorizationProvider.requireUser
+		},
+		reloadOnSearch: false,
+		onRouteError: {
+			redirectTo: '/'
+		}
+	});
+
+	routeFilterProvider.when('/organizationCenter', {
+		templateUrl: 'organizationCenter/organizations/organizations.html',
+		resolve: {
+			canNav: ['permissions', function (permissions) {
+				return permissions.canNavigate('organizations');
+			}]
+		}
+	});
+
+}]);

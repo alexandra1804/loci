@@ -1,3 +1,3 @@
-# angular-fire.github.io
+# loci
 
-This is a little app to manage firebase db based on Firebase, Angular.js and Materialize.css
+Small app to memorize your discoveries

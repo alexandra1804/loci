@@ -1,5 +1,4 @@
 /* Custom Stylesheet */
-
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -33,13 +32,6 @@ p {
   .parallax-container .section {
     width: 100%;
   }
-  
- /*
- .parallax img {
- 	 display: block !important;
- 	 transform: translate3d(-50%, 300px, 0px) !important;
- }
-*/
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
