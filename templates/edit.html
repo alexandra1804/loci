@@ -5,8 +5,12 @@
 	{% else %}
 	<h1 class="header center teal-text text-lighten-2">Add Note</h1>
 	{% endif %}
-	<div class="row">
-		<form class="col s12" action="/add" method=post>
+	<div class="section no-pad-bot container row">
+		{% if note %}
+		<form class="col s12" action="/save?id={{ note.id }}" method=post>
+		{% else %}
+		<form class="col s12" action="/save" method=post>
+		{% endif %}
 			<div class="row">
 				<div class="input-field col s12">
 					<input id="label" type="text" class="validate" name="label" value="{{ note.label }}">
@@ -17,6 +21,12 @@
 				<div class="input-field col s12">
 					<input id="descr" type="text" class="validate" onclick="shownote();" name="descr" value="{{ note.descr }}">
 					<label for="descr">Description</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="descr" type="text" class="validate" name="link" value="{{ note.link }}">
+					<label for="link">Source link</label>
 				</div>
 			</div>
 			<div style="display: none" class="note card-panel teal lighten-2">Note that any links should be added in markdown to be clickable</div>

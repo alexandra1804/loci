@@ -1,0 +1,12 @@
+{ 
+    "_id" : ObjectId("5a41491514b2c67b0d6b1f11"), 
+    "label" : "About rabbits", 
+    "descr" : "Rabbits are small mammals in the family Leporidae of the order Lagomorpha, found in several parts of the world. There are eight different genera in the family classified as rabbits, including the European rabbit (Oryctolagus cuniculus), cottontail rabbits (genus Sylvilagus; 13 species), and the Amami rabbit (Pentalagus furnessi, an endangered species on Amami Ōshima, Japan). There are many other species of rabbit, and these, along with pikas and hares, make up the order Lagomorpha. The male is called a buck and the female is a doe; a young rabbit is a kitten or kit.", 
+    "link" : "https://en.wikipedia.org/wiki/Rabbit"
+}
+{ 
+    "_id" : ObjectId("5a414c8d14b2c67b0d6b1f12"), 
+    "label" : "Material Icons", 
+    "descr" : "Source of icons used in UI deveopment provided by Google.", 
+    "link" : "https://material.io/icons/"
+}

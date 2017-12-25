@@ -18,7 +18,7 @@ def showList():
   output = []
   for note in notes.find():
     id = str(note['_id'])
-    output.append({'id' : id, 'label' : note['label'], 'descr' : note['descr']})
+    output.append({'id' : id, 'label' : note['label'], 'descr' : note['descr'], 'link' : note['link']})
   jsonify({'result' : output})
   return render_template('list.html', notes=output)
 
@@ -27,34 +27,34 @@ def showEdit():
   id = request.args.get('id')
   output = []
   if id:
-    oid = ObjectId(id)
     notes = mongo.db.notes
     note = notes.find_one({'_id' : ObjectId(id)})
     if note:
-      output = {'label' : note['label'], 'descr' : note['descr']}
+      output = {'id' : id, 'label' : note['label'], 'descr' : note['descr'], 'link' : note['link']}
     else:
       output = "No such note"
   jsonify({'result' : output})
   return render_template('edit.html', note=output)
 
-# @app.route('/edit', methods=['POST'])
-# def add_note():
-#   notes = mongo.db.notes
-#   label = request.json['label']
-#   descr = request.json['descr']
-#   note_id = notes.insert({'label': label, 'descr': descr})
-#   new_note = notes.find_one({'_id': note_id })
-#   output = {'label' : new_star['label'], 'descr' : new_star['descr']}
-#   jsonify({'result' : output})
-#   showList()
-
-@app.route('/add', methods=['POST'])
-def add_note():
+@app.route('/save', methods=['POST'])
+def save_note():
     notes = mongo.db.notes
     label = request.form['label']
     descr = request.form['descr']
-    notes.insert({'label': label, 'descr': descr})
+    link = request.form['link']
+    id = request.args.get('id')
+    if id:
+      notes.update({'_id' : ObjectId(id)}, {'$set': {'label': label, 'descr': descr, 'link' : link}})
+    else:
+      notes.insert({'label': label, 'descr': descr, 'link' : link})
     return redirect('/')
+
+@app.route('/delete', methods=['GET'])
+def deleteNote():
+  notes = mongo.db.notes
+  id = request.args.get('id')
+  notes.remove({'_id': ObjectId(id)})
+  return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

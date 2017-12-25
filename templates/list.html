@@ -32,14 +32,16 @@
         {% if notes %}
             {% for note in notes %}
             <div class="section">
-                <div class="row" id="searchlist">
-                    <div class="col s12">
-                        <a href="/edit?id={{note.id}}">
-                            <h2>{{ note.label }}</h2>
-                            <br>
-                            <h5 class="descr markdown"><i>{{ note.descr }}</i></h5>
-                        </a>
+                <div id="searchlist">
+                    <div class="row valign-wrapper">
+                        <a href="/edit?id={{note.id}}" class="col s11"><h2>{{ note.label }}</h2></a>
+                        <a href="/delete?id={{note.id}}"><i class="medium material-icons valign">close</i></a>
                     </div>
+                    <br>
+                    <h5 class="descr"><i>{{ note.descr }}</i></h5>
+                    {% if notes %}
+                        <a href="{{ note.link }}" class="link">{{ note.link }}</a>
+                    {% endif %}
                 </div>
             </div>
             <div class="divider"></div>
