@@ -1,61 +1,43 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <title>Loci</title>
-
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-
-<body>
-    <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">My Notes</a>
-        <ul class="right hide-on-med-and-down">
-        <li><a href="#/edit">New Note</a></li>
-        </ul>
-
-        <ul id="slide-out" class="side-nav">
-        <li class="bold"><a href="#/edit" class="waves-effect waves-teal">New Note</a></li>
-        </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-    </nav>
-
+{% extends "layout.html" %}
+{% block body %}
     <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-        <div class="container">
-        <br><br>
-        <h1 class="header center teal-text text-lighten-2">My Notes</h1>
-        <div class="row center">
-            <h5 class="header col s12 light">Start managing your memories by searching</h5>
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="header center teal-text text-lighten-2">My Notes</h1>
+                <div class="row center">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class=flashes>
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    <h5 class="header col s12 light">Start managing your memories</h5>
+                </div>
+                <!-- <input id="searchinput" class="form-control" type="search" placeholder="Search..." ng-model="userInput.name" data-clear-btn="true"/>
+                <button ng-if="userInput.name.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()" />
+                <div class="row center">
+                    <button data-clear-btn="true" type="button" id="download-button" class="btn-large waves-effect waves-light teal lighten-1" ng-click="applySearch()" onclick="showclear()">Search</button>
+                </div>
+                <br><br> -->
+            </div>
         </div>
-        <input id="searchinput" class="form-control" type="search" placeholder="Search..." ng-model="userInput.name" data-clear-btn="true"/>
-        <button ng-if="userInput.name.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()" />
-        <div class="row center">
-            <button data-clear-btn="true" type="button" id="download-button" class="btn-large waves-effect waves-light teal lighten-1" ng-click="applySearch()" onclick="showclear()">Search</button>
-        </div>
-        <br><br>
-        </div>
+        <div class="parallax"><img src="static/img/parallax.jpg" alt="Unsplashed background img 3"></div>
     </div>
-    <div class="parallax"><img src="static/img/parallax.jpg" alt="Unsplashed background img 3"></div>
-    </div>
-
+    
     <div class="container">
         {% if notes %}
             {% for note in notes %}
             <div class="section">
                 <div class="row" id="searchlist">
                     <div class="col s12">
-                        <a href="#" class="teal-text text-lighten-5">
-                            <b>{{ note.label }}</b>
+                        <a href="/edit?id={{note.id}}">
+                            <h2>{{ note.label }}</h2>
                             <br>
-                            <i class="descr markdown">{{ note.descr }}</i>
+                            <h5 class="descr markdown"><i>{{ note.descr }}</i></h5>
                         </a>
                     </div>
                 </div>
@@ -72,18 +54,7 @@
         </div>
         {% endif %}
     </div>
-
-    <!--  Scripts-->
-
-    <script src="static/node_modules/jquery/dist/jquery.js"></script>
-
-    <script src="static/js/helpers/materialize.js"></script>
-    <script src="static/js/helpers/init.js"></script>
-    <script src="static/js/helpers/showdown.js"></script>
-    <script src="static/js/helpers/bootstrap-list-filter.min.js"></script>
-    <script src="static/js/helpers/script.js"></script>
-</body>
-</html>
+{% endblock %}
 
 {#
 <!--

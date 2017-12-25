@@ -62,7 +62,6 @@ footer.page-footer {
 
 @media screen and (max-width: 767px) {
     .descr {
-        font-size: 2vw;
         box-sizing: content-box;
     }
 }

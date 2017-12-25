@@ -1,21 +1,28 @@
-<h1 class="header center teal-text text-lighten-2">Add new project</h1>
-<div class="row">
-   <form class="col s12">
-	 <div class="row">
-	   <div class="input-field col s12">
-		 <input id="name" type="text" class="validate" ng-model="nameInput">
-		 <label for="name">Name</label>
-	   </div>
-	 </div>
-	 <div class="row">
-		 <div class="input-field col s12">
-			 <input id="name" type="text" class="validate" onclick="shownote();" ng-model="descrInput">
-			 <label for="name">Description</label>
-		 </div>
-	 </div>
-	 <div style="display: none" class="note card-panel teal lighten-2">Note that any links should be added in markdown to be clickable</div>
-   </form>
-</div>
-<div class="row center">
-	<button type="button" id="download-button" class="btn-large waves-effect waves-light teal lighten-1" ng-click="addProject()">Add project</button>
-</div>
+{% extends "layout.html" %}
+{% block body %}
+	{% if note %}
+	<h1 class="header center teal-text text-lighten-2">Edit Note</h1>
+	{% else %}
+	<h1 class="header center teal-text text-lighten-2">Add Note</h1>
+	{% endif %}
+	<div class="row">
+		<form class="col s12" action="/add" method=post>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="label" type="text" class="validate" name="label">
+					<label for="label">Name</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="descr" type="text" class="validate" onclick="shownote();" name="descr">
+					<label for="descr">Description</label>
+				</div>
+			</div>
+			<div style="display: none" class="note card-panel teal lighten-2">Note that any links should be added in markdown to be clickable</div>
+			<div class="row center">
+				<button type="submit" class="btn-large waves-effect waves-light teal lighten-1">Save Note</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}
